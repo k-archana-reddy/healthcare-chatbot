@@ -1,8 +1,3 @@
-# if you dont use pipenv uncomment the following:
-# from dotenv import load_dotenv
-# load_dotenv()
-
-#VoiceBot UI with Gradio
 import os
 import gradio as gr
 from pydub import AudioSegment
@@ -11,7 +6,6 @@ from brain_of_the_doctor import encode_image, analyze_image_with_query
 from voice_of_the_patient import record_audio, transcribe_with_groq
 from voice_of_the_doctor import text_to_speech_with_gtts, text_to_speech_with_elevenlabs
 
-#load_dotenv()
 
 system_prompt="""You have to act as a professional doctor, i know you are not but this is for learning purpose. 
             What's in this image?. Do you find anything wrong with it medically? 
@@ -30,7 +24,6 @@ def process_inputs(audio_filepath, image_filepath):
                                                  audio_filepath=audio_filepath,
                                                  stt_model="whisper-large-v3")
 
-    # Handle the image input
     if image_filepath:
         doctor_response = analyze_image_with_query(query=system_prompt+speech_to_text_output, encoded_image=encode_image(image_filepath), model="llama-3.2-11b-vision-preview")
     else:
@@ -43,7 +36,6 @@ def process_inputs(audio_filepath, image_filepath):
 
     return speech_to_text_output, doctor_response, wav_path
 
-# Create the interface
 iface = gr.Interface(
     fn=process_inputs,
     inputs=[
@@ -60,4 +52,4 @@ iface = gr.Interface(
 
 iface.launch(debug=True)
 
-#http://127.0.0.1:7860
+

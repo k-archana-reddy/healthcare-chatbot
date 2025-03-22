@@ -1,26 +1,16 @@
-# if you dont use pipenv uncomment the following:
-# from dotenv import load_dotenv
-# load_dotenv()
-
 import os
 from dotenv import load_dotenv
 
-load_dotenv()  # Load .env file variables
+load_dotenv()  
 
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
-print(f"API Key: {GROQ_API_KEY}")  # Debugging
-
-#Step2: Convert image to required format
+print(f"API Key: {GROQ_API_KEY}")  
 import base64
-
-
-#image_path="acne.jpg"
 
 def encode_image(image_path):   
     image_file=open(image_path, "rb")
     return base64.b64encode(image_file.read()).decode('utf-8')
 
-#Step3: Setup Multimodal LLM 
 from groq import Groq
 
 query="Is there something wrong with my face?"
