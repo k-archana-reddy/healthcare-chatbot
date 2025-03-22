@@ -44,10 +44,10 @@ iface = gr.Interface(
     ],
     outputs=[
         gr.Textbox(label="Speech to Text"),
-        gr.Textbox(label="Doctor's Response"),
+        gr.Textbox(label="Bot's Response"),
         gr.Audio("final.wav")
     ],
-    title="AI Doctor with Vision and Voice"
+    title="AidBot"
 )
 
 iface.launch(debug=True)
