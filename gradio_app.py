@@ -2,12 +2,12 @@ import os
 import gradio as gr
 from pydub import AudioSegment
 
-from brain_of_the_doctor import encode_image, analyze_image_with_query
-from voice_of_the_patient import record_audio, transcribe_with_groq
-from voice_of_the_doctor import text_to_speech_with_gtts, text_to_speech_with_elevenlabs
+from bot_brain import encode_image, analyzing_image_with_query
+from user_voice import recording_audio, transcribe_with_groq
+from bot_voice import text_to_speech_with_elevenlabs
 
 
-system_prompt="""You have to act as a professional doctor, i know you are not but this is for learning purpose. 
+system_prompt="""You have to act as a professional doctor, i know you are not but this is for a chatbot. 
             What's in this image?. Do you find anything wrong with it medically? 
             If you make a differential, suggest some remedies for them. Donot add any numbers or special characters in 
             your response. Your response should be in one long paragraph. Also always answer as if you are answering to a real person.
@@ -25,7 +25,7 @@ def process_inputs(audio_filepath, image_filepath):
                                                  stt_model="whisper-large-v3")
 
     if image_filepath:
-        doctor_response = analyze_image_with_query(query=system_prompt+speech_to_text_output, encoded_image=encode_image(image_filepath), model="llama-3.2-11b-vision-preview")
+        doctor_response = analyzing_image_with_query(query=system_prompt+speech_to_text_output, encoded_image=encode_image(image_filepath), model="llama-3.2-11b-vision-preview")
     else:
         doctor_response = "No image provided for me to analyze"
 

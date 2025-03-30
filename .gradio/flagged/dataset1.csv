@@ -1,2 +1,2 @@
-audio_filepath,image_filepath,Speech to Text,Doctor's Response,output 2,timestamp
+audio_filepath,image_filepath,Speech to Text,Bot's Response,output 2,timestamp
 .gradio\flagged\audio_filepath\f4b95c7e3333c1e17152\audio.wav,.gradio\flagged\image_filepath\a4742ca50caef8d3956b\acne.jpg,,,.gradio\flagged\output 2\06f1408d838b55f2abc6\final.mp3,2025-03-22 13:41:14.965821
